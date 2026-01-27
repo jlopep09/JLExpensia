@@ -1,0 +1,56 @@
+services:
+  mariadb:
+    image: "mariadb:12"
+    restart: 'no'
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+  backend:
+    build:
+      context: ./api
+      target: builder
+    volumes:
+      - ./api:/api
+    environment:
+      PORT: 8000
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      PYTHON_DB_HOST: "mariadb"
+      PYTHON_DB_ACC_PORT: 3306
+    ports:
+      - '8000:8000'
+    restart: "no"
+    depends_on:
+      - mariadb
+    expose:
+      - 8000
+  ui:
+    build:
+      context: ./ui
+      target: builder
+    volumes:
+      - ./ui:/ui
+      - /ui/node_modules
+    environment:
+      API_HOST: "api"
+      API_PORT: 8000
+      CHOKIDAR_USEPOLLING: true
+    ports:
+      - '5173:5173'
+    restart: "no"
+    expose:
+      - 5173
+
+volumes:
+  db_data:
