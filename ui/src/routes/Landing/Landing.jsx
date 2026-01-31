@@ -1,9 +1,244 @@
-import React from 'react'
+import React, { useState } from "react";
+import { VITE_APP_NAME } from '../../../constants'
+import Footer from "../../common/components/Footer";
 
-const Landing = () => {
+// LandingPage_DaisyUI_v5.jsx
+// Requisitos: Tailwind CSS + DaisyUI v5 instalados y configurados en tu proyecto.
+// Uso: importar y usar <LandingPage /> en tu App.jsx/Index.jsx
+
+export default function Landing() {
+  const [showEmail, setShowEmail] = useState(false)
   return (
-    <div>Landing</div>
-  )
+    <div className="min-h-screen bg-white text-black antialiased">
+      {/* Container */}
+      <header className="container mx-auto px-6 md:px-12 py-8 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-slate-500 flex items-center justify-center text-white font-bold">JL</div>
+          <div>
+            <a className="text-lg font-semibold hover:opacity-90" href="#">{VITE_APP_NAME}</a>
+            <div className="text-xs opacity-60">Finanzas para PYMES y particulares</div>
+          </div>
+        </div>
+
+        <nav className="hidden md:flex items-center gap-6 text-sm opacity-90">
+          <a className="hover:text-primary" href="#features">Features</a>
+          <a className="hover:text-primary" href="#about">About</a>
+          <button className="btn btn-ghost btn-sm">Log in</button>
+          <button className="btn btn-primary btn-sm">Get started</button>
+        </nav>
+
+        <div className="md:hidden">
+          <button className="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-6 md:px-12">
+        {/* Hero */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-16">
+          <article>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+              Finanzas claras. Decisiones acertadas.
+            </h1>
+            <p className="mt-6 text-lg opacity-80 max-w-xl">
+              Plataforma minimalista para gestión de finanzas: gestion de ingresos y gastos,
+              consejos de salud financiera y generación de reportes PDF.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a className="btn btn-primary btn-lg" href="#">Empieza gratis</a>
+              <a className="btn btn-ghost btn-lg btn-disabled" href="#">Ver demo</a>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-4 items-center">
+              <Stat label="Uptime" value="99.99%" />
+              <Stat label="Usuarios" value="0+" />
+              <Stat label="Reportes" value="0+" />
+            </div>
+          </article>
+
+          <aside className="order-first md:order-last flex justify-center">
+            {/* Abstract SVG illustration */}
+            <div className="w-full max-w-md">
+              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración abstracta" className="w-full">
+                <defs>
+                  <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="100%">
+                    <stop offset="0%" stopColor="var(--tw-color-primary)" stopOpacity="0.95" />
+                    <stop offset="100%" stopColor="black" stopOpacity="0.08" />
+                  </linearGradient>
+                </defs>
+
+                <rect x="0" y="0" width="600" height="400" rx="16" fill="#ffffff" stroke="#f1f5f9" />
+
+                <g transform="translate(40,20)">
+                  <ellipse cx="220" cy="160" rx="180" ry="90" fill="url(#g1)" opacity="0.12" />
+
+                  <g transform="translate(80,30)">
+                    <rect x="0" y="0" width="160" height="120" rx="12" fill="white" stroke="rgba(0,0,0,0.04)" />
+                    <circle cx="130" cy="24" r="22" fill="var(--tw-color-primary)" />
+                    <rect x="18" y="18" width="110" height="16" rx="6" fill="#eef2ff" />
+                    <rect x="18" y="44" width="80" height="10" rx="5" fill="#f8fafc" />
+                    <rect x="18" y="64" width="60" height="10" rx="5" fill="#f8fafc" />
+                  </g>
+
+                  <g transform="translate(270,120)">
+                    <rect x="0" y="0" width="180" height="100" rx="12" fill="white" stroke="rgba(0,0,0,0.04)" />
+                    <path d="M10 60 q40 -30 80 0 q40 -30 80 0" fill="none" stroke="var(--tw-color-primary)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                  </g>
+                </g>
+
+                {/* Decorative small shapes */}
+                <circle cx="520" cy="60" r="10" fill="var(--tw-color-primary)" opacity="0.95" />
+                <circle cx="540" cy="320" r="8" fill="#111827" opacity="0.06" />
+              </svg>
+            </div>
+          </aside>
+        </section>
+
+        {/* Features */}
+        <section id="features" className="py-12">
+          <h2 className="text-2xl font-semibold mb-6">Funionalidades</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              title="Gestiona tus ingresos y gastos"
+              desc="Secciones para cuantificar ingresos, ahorros, gastos e inversiones."
+              icon={IconLive}
+            />
+
+            <FeatureCard
+              title="Gastos por categoría"
+              desc="Enriquece tus reportes creando categorías y asignandolas a tus gastos"
+              icon={IconBell}
+            />
+
+            <FeatureCard
+              title="Plataforma gratuita OpenSource"
+              desc="Nuestros servicios son gratuitos y trataremos de mantener esta premisa siempre que sea sostenible el número de usuarios"
+              icon={IconDashboard}
+            />
+
+            <FeatureCard
+              title="No se almacenan tus datos financieros"
+              desc="No almacenamos ningún dato de finanzas. No almacenamos datos sensibles."
+              icon={IconApi}
+            />
+
+            <FeatureCard
+              title="Escuchamos a los usuarios"
+              desc="Sugerencias y dudas de nuestros usuarios son contestadas a través del correo electrónico aportado al final de esta página."
+              icon={IconLeaf}
+            />
+
+            <FeatureCard
+              title="Ruta de desarrollo"
+              desc="Estamos deseando aumentar las funcionalidades del servicio. Nuestra próxima meta es la compatibilidad multicuenta para PYMES"
+              icon={IconShield}
+            />
+
+          </div>
+        </section>
+
+
+
+        {/* About & Footer */}
+        <section id="about" className="py-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            <div className="md:col-span-2">
+              <h4 className="text-lg font-semibold">Diseñado para simplicidad</h4>
+              <p className="mt-4 opacity-80 max-w-2xl">Enfocamos la interfaz en lo esencial: datos claros, acciones rápidas y una estética que no distrae. Puede visitar el código de esta página o contactar con nosotros a través de los siguientes enlaces.</p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <h4 className="text-lg font-semibold">Enlaces</h4>
+              
+              {!showEmail&&(
+                <a className="text-sm hover:text-primary cursor-pointer" onClick={()=>setShowEmail(true)}>Email</a>
+              )}
+              {showEmail&&(
+                <a className="text-sm hover:text-primary cursor-pointer">Email: jose.lppz03@gmail.com</a>
+              )}
+              <a className="text-sm hover:text-primary cursor-pointer " href="https://github.com/jlopep09/JLExpensia" target="_blank">Github</a>
+              <a className="text-sm hover:text-primary" href="https://joselp.com/" target="_blank">Desarrollador</a>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <Footer></Footer>
+    </div>
+  );
 }
 
-export default Landing
+// --- Small presentational components ---
+
+function Stat({ label, value }) {
+  return (
+    <div className="flex flex-col">
+      <div className="text-sm opacity-70">{label}</div>
+      <div className="text-lg font-semibold">{value}</div>
+    </div>
+  );
+}
+
+function FeatureCard({ title, desc, icon: Icon }) {
+  return (
+    <article className="p-6 rounded-2xl bg-white shadow-sm border border-base-200 hover:scale-105 transition ">
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-primary/10">
+          <Icon />
+        </div>
+        <div>
+          <h5 className="font-semibold">{title}</h5>
+          <p className="text-sm opacity-80 mt-1">{desc}</p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+// --- Inline SVG icons (no external licenses needed) ---
+const IconLive = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+    <path d="M8 12a4 4 0 0 1 8 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const IconBell = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <path d="M15 17H9a3 3 0 0 1-3-3V11a6 6 0 1 1 12 0v3a3 3 0 0 1-3 3z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const IconDashboard = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" strokeWidth="1.4" />
+    <rect x="13" y="3" width="8" height="5" rx="2" stroke="currentColor" strokeWidth="1.4" />
+    <rect x="13" y="10" width="8" height="11" rx="2" stroke="currentColor" strokeWidth="1.4" />
+    <rect x="3" y="13" width="8" height="7" rx="2" stroke="currentColor" strokeWidth="1.4" />
+  </svg>
+);
+
+const IconApi = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const IconLeaf = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <path d="M2 12s4-8 12-8 8 8 8 8-2 8-12 8S2 12 2 12z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const IconShield = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <path d="M12 3l8 4v5c0 5-3.58 9.74-8 11-4.42-1.26-8-6-8-11V7l8-4z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
