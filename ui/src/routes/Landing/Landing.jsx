@@ -9,13 +9,13 @@ import Footer from "../../common/components/Footer";
 export default function Landing() {
   const [showEmail, setShowEmail] = useState(false)
   return (
-    <div className="min-h-screen bg-white text-black antialiased">
+    <div className="min-h-screen bg-white text-black antialiased cursor-default">
       {/* Container */}
       <header className="container mx-auto px-6 md:px-12 py-8 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-slate-500 flex items-center justify-center text-white font-bold">JL</div>
           <div>
-            <a className="text-lg font-semibold hover:opacity-90" href="#">{VITE_APP_NAME}</a>
+            <a className="text-lg font-semibold hover:opacity-90" href="/">{VITE_APP_NAME}</a>
             <div className="text-xs opacity-60">Finanzas para PYMES y particulares</div>
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function Landing() {
 
       <main className="container mx-auto px-6 md:px-12">
         {/* Hero */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-16">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-8 md:py-16">
           <article>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
               Finanzas claras. Decisiones acertadas.
@@ -54,7 +54,7 @@ export default function Landing() {
             </div>
 
             <div className="mt-8 grid grid-cols-3 gap-4 items-center">
-              <Stat label="Uptime" value="99.99%" />
+              <Stat label="Actividad" value="99.99%" />
               <Stat label="Usuarios" value="0+" />
               <Stat label="Reportes" value="0+" />
             </div>
@@ -63,37 +63,73 @@ export default function Landing() {
           <aside className="order-first md:order-last flex justify-center">
             {/* Abstract SVG illustration */}
             <div className="w-full max-w-md">
-              <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración abstracta" className="w-full">
-                <defs>
-                  <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="100%">
-                    <stop offset="0%" stopColor="var(--tw-color-primary)" stopOpacity="0.95" />
-                    <stop offset="100%" stopColor="black" stopOpacity="0.08" />
-                  </linearGradient>
-                </defs>
+              <svg
+  viewBox="0 0 640 420"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Financial analytics dashboard illustration"
+  className="w-full hidden md:block "
+>
+  <defs>
+    <linearGradient id="gradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="var(--tw-color-primary)" stopOpacity="0.9" />
+      <stop offset="100%" stopColor="black" stopOpacity="0.05" />
+    </linearGradient>
+  </defs>
 
-                <rect x="0" y="0" width="600" height="400" rx="16" fill="#ffffff" stroke="#f1f5f9" />
+  {/* Background card */}
+  <rect x="0" y="0" width="640" height="420" rx="20" fill="white" stroke="#e5e7eb" />
 
-                <g transform="translate(40,20)">
-                  <ellipse cx="220" cy="160" rx="180" ry="90" fill="url(#g1)" opacity="0.12" />
+  {/* Grid lines */}
+  <g stroke="#e5e7eb" strokeWidth="1">
+    <line x1="80" y1="80" x2="560" y2="80" />
+    <line x1="80" y1="160" x2="560" y2="160" />
+    <line x1="80" y1="240" x2="560" y2="240" />
+    <line x1="80" y1="320" x2="560" y2="320" />
+  </g>
 
-                  <g transform="translate(80,30)">
-                    <rect x="0" y="0" width="160" height="120" rx="12" fill="white" stroke="rgba(0,0,0,0.04)" />
-                    <circle cx="130" cy="24" r="22" fill="var(--tw-color-primary)" />
-                    <rect x="18" y="18" width="110" height="16" rx="6" fill="#eef2ff" />
-                    <rect x="18" y="44" width="80" height="10" rx="5" fill="#f8fafc" />
-                    <rect x="18" y="64" width="60" height="10" rx="5" fill="#f8fafc" />
-                  </g>
+  {/* Growth line */}
+  <path
+    d="M80 300 C160 260, 220 280, 300 220 C380 160, 460 180, 560 120"
+    fill="none"
+    stroke="var(--tw-color-primary)"
+    strokeWidth="4"
+    strokeLinecap="round"
+  />
 
-                  <g transform="translate(270,120)">
-                    <rect x="0" y="0" width="180" height="100" rx="12" fill="white" stroke="rgba(0,0,0,0.04)" />
-                    <path d="M10 60 q40 -30 80 0 q40 -30 80 0" fill="none" stroke="var(--tw-color-primary)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
-                  </g>
-                </g>
+  {/* Area under curve */}
+  <path
+    d="M80 300 C160 260, 220 280, 300 220 C380 160, 460 180, 560 120 L560 340 L80 340 Z"
+    fill="url(#gradPrimary)"
+    opacity="0.15"
+  />
 
-                {/* Decorative small shapes */}
-                <circle cx="520" cy="60" r="10" fill="var(--tw-color-primary)" opacity="0.95" />
-                <circle cx="540" cy="320" r="8" fill="#111827" opacity="0.06" />
-              </svg>
+  {/* Data points */}
+  <g fill="var(--tw-color-primary)">
+    <circle cx="80" cy="300" r="4" />
+    <circle cx="180" cy="265" r="4" />
+    <circle cx="300" cy="220" r="4" />
+    <circle cx="420" cy="175" r="4" />
+    <circle cx="560" cy="120" r="4" />
+  </g>
+
+  {/* Floating stat cards */}
+  <g>
+    <rect x="120" y="40" width="140" height="60" rx="12" fill="white" stroke="#e5e7eb" />
+    <text x="140" y="65" fontSize="12" fill="#6b7280">Ahorro</text>
+    <text x="140" y="85" fontSize="16" fontWeight="600" fill="black">+124.300€</text>
+  </g>
+
+  <g>
+    <rect x="380" y="260" width="160" height="70" rx="12" fill="white" stroke="#e5e7eb" />
+    <text x="400" y="285" fontSize="12" fill="#6b7280">Crecimiento</text>
+    <text x="400" y="310" fontSize="18" fontWeight="600" fill="var(--tw-color-primary)">+18.4%</text>
+  </g>
+
+  {/* Decorative dots */}
+  <circle cx="560" cy="40" r="6" fill="var(--tw-color-primary)" opacity="0.9" />
+  <circle cx="60" cy="380" r="5" fill="#111827" opacity="0.06" />
+</svg>
             </div>
           </aside>
         </section>

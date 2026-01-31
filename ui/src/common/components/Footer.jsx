@@ -10,11 +10,11 @@ const Footer = () => {
           
             <div>
               <div className="font-semibold">{VITE_APP_NAME}</div>
-              <div className="text-xs opacity-70">© {new Date().getFullYear()} {VITE_APP_NAME} — All rights reserved</div>
+              <div className="text-xs opacity-70">© {new Date().getFullYear()} {VITE_APP_NAME}</div>
             </div>
           </div>
 
-          <div className="text-sm opacity-80">Made by <span className="text-primary hover:text-accent"><a href="https://joselp.com/" target="_blank">José Antonio López Pérez</a></span></div>
+          <div className="text-sm opacity-80"><span className="text-primary hover:text-accent"><a href="https://joselp.com/" target="_blank">José Antonio López Pérez</a></span></div>
         </div>
       </footer>
       )
