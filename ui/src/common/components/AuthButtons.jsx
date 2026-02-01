@@ -6,21 +6,17 @@ export default function AuthButtons() {
   return (
     <div>
       {!isAuthenticated ? (
-        <button onClick={() => loginWithRedirect()}>
-          Login
-        </button>
+        <li><a className="bg-secondary text-white" onClick={() => loginWithRedirect()}>Login</a></li>
+        
       ) : (
         <>
-          <span>{user?.email}</span>
-          <button
-            onClick={() =>
+          <span className="my-3 font-bold justify-center text-center w-full flex items-center">{user?.email }</span>
+          <li><a className="bg-secondary text-white" onClick={() =>
               logout({
                 logoutParams: { returnTo: window.location.origin },
               })
-            }
-          >
-            Logout
-          </button>
+            }>Cerrar sesión</a></li>
+        
         </>
       )}
     </div>

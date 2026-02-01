@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { VITE_APP_NAME } from '../../../constants'
 import Footer from "../../common/components/Footer";
+import { Link } from "react-router";
 
 // LandingPage_DaisyUI_v5.jsx
 // Requisitos: Tailwind CSS + DaisyUI v5 instalados y configurados en tu proyecto.
@@ -24,7 +25,7 @@ export default function Landing() {
           <a className="hover:text-primary" href="#features">Features</a>
           <a className="hover:text-primary" href="#about">About</a>
           <button className="btn btn-ghost btn-sm">Log in</button>
-          <button className="btn btn-primary btn-sm">Get started</button>
+          <Link className="btn btn-primary btn-sm" to={"/home"}>Get started</Link>
         </nav>
 
         <div className="md:hidden">
