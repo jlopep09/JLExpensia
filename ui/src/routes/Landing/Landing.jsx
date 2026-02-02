@@ -22,10 +22,9 @@ export default function Landing() {
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm opacity-90">
-          <a className="hover:text-primary" href="#features">Features</a>
-          <a className="hover:text-primary" href="#about">About</a>
-          <button className="btn btn-ghost btn-sm">Log in</button>
-          <Link className="btn btn-primary btn-sm" to={"/home"}>Get started</Link>
+          <a className="hover:text-primary" href="#features">Funcionalidades</a>
+          <a className="hover:text-primary" href="#about">Contacto</a>
+          <Link className="btn btn-primary btn-sm" to={"/home"}>Empieza gratis</Link>
         </nav>
 
         <div className="md:hidden">
@@ -50,7 +49,7 @@ export default function Landing() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a className="btn btn-primary btn-lg" href="#">Empieza gratis</a>
+              <Link className="btn btn-primary btn-lg" to={"/home"}>Empieza gratis</Link>
               <a className="btn btn-ghost btn-lg btn-disabled" href="#">Ver demo</a>
             </div>
 
@@ -137,7 +136,7 @@ export default function Landing() {
 
         {/* Features */}
         <section id="features" className="py-12">
-          <h2 className="text-2xl font-semibold mb-6">Funionalidades</h2>
+          <h2 className="text-2xl font-semibold mb-6">Funcionalidades</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard
@@ -187,6 +186,7 @@ export default function Landing() {
             <div className="md:col-span-2">
               <h4 className="text-lg font-semibold">Diseñado para simplicidad</h4>
               <p className="mt-4 opacity-80 max-w-2xl">Enfocamos la interfaz en lo esencial: datos claros, acciones rápidas y una estética que no distrae. Puede visitar el código de esta página o contactar con nosotros a través de los siguientes enlaces.</p>
+              <Link to={"/help"} className="btn btn-primary mt-4">Centro de ayuda</Link>
             </div>
 
             <div className="flex flex-col gap-3">
