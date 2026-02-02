@@ -1,7 +1,14 @@
 import React from 'react'
 import ToolCard from './components/ToolCard'
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Home = () => {
+
+  const { isAuthenticated } = useAuth0();
+
+  if(!isAuthenticated){ return <div>Loading...</div>}
+
+
   return (
     <div className='w-full flex flex-col justify-center items-center'>
       <h2 className='text-xl font-bold text-center my-4'>Herramientas</h2>

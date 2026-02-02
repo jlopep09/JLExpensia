@@ -3,7 +3,8 @@ import { VITE_APP_NAME } from '../../../constants'
 import AuthButtons from './AuthButtons'
 import { useAuth0 } from '@auth0/auth0-react';
 const Header = () => {
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
+  const { isAuthenticated } = useAuth0();
+  if(!isAuthenticated){return (<></>)}
   return (
     <header className="navbar bg-base-100 shadow-sm justify-between py-4 mt-4">
       <div className="flex max-w-2xs">
