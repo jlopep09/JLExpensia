@@ -1,6 +1,7 @@
 import React from 'react'
 import ToolCard from './components/ToolCard'
 import { useAuth0 } from '@auth0/auth0-react';
+import DevWarning from '../../common/components/DevWarning';
 
 const Home = () => {
 
@@ -10,7 +11,8 @@ const Home = () => {
 
 
   return (
-    <div className='w-full flex flex-col justify-center items-center'>
+    <div className='w-full flex flex-col justify-center items-center pt-4'>
+      <DevWarning></DevWarning>
       <h2 className='text-xl font-bold text-center my-4'>Herramientas</h2>
       <div className=' grid grid-cols-1 md:grid-cols-2 lg:max-w-3xl gap-4'>
 
