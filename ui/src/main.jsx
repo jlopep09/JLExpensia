@@ -11,6 +11,7 @@ import ProtectedRoute from './common/components/ProtectedRoute'
 import Landing from './routes/Landing/Landing'
 import Auth0ProviderWithRouter from './common/components/Auth0ProviderWithRouter'
 import Help from './routes/Help/Help'
+import BrutoNeto from './routes/BrutoNeto/BrutoNeto'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,7 +22,9 @@ createRoot(document.getElementById('root')).render(
         
         <Route path="/" element={<Landing />} />
         <Route path="/help" element={<Help></Help>} />
+        
         <Route element={<Layout />}>  
+          <Route path="/bruto-neto" element={<BrutoNeto></BrutoNeto>} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
         </Route>
         <Route path="*" element={<NotFound />} />
