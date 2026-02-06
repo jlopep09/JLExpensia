@@ -12,7 +12,7 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-white text-black antialiased cursor-default">
       {/* Container */}
-      <header className="container mx-auto px-6 md:px-12 py-8 flex items-center justify-between">
+      <header className="px-6 md:px-12 py-8 flex items-center justify-between w-full">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-slate-500 flex items-center justify-center text-white font-bold">JL</div>
           <div>
@@ -22,8 +22,6 @@ export default function Landing() {
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm opacity-90">
-          <a className="hover:text-primary" href="#features">Funcionalidades</a>
-          <a className="hover:text-primary" href="#about">Contacto</a>
           <Link className="btn btn-primary btn-sm" to={"/home"}>Empieza gratis</Link>
         </nav>
 
@@ -36,9 +34,9 @@ export default function Landing() {
         </div>
       </header>
 
-      <main className="container mx-auto px-6 md:px-12">
+      <main className=" flex flex-col min-w-vwl w-full justify-center items-center px-6 md:px-12  ">
         {/* Hero */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-8 md:py-16">
+        <section className="mt-5 shadow-sm border border-base-200 p-4 pl-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-8 md:py-16 max-w-7xl">
           <article>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
               Finanzas claras. Decisiones acertadas.
@@ -60,7 +58,7 @@ export default function Landing() {
             </div>
           </article>
 
-          <aside className="order-first md:order-last flex justify-center">
+          <aside className="order-first md:order-last flex justify-end">
             {/* Abstract SVG illustration */}
             <div className="w-full max-w-md">
               <svg
@@ -135,7 +133,7 @@ export default function Landing() {
         </section>
 
         {/* Features */}
-        <section id="features" className="py-12">
+        <section id="features" className="py-12 max-w-7xl">
           <h2 className="text-2xl font-semibold mb-6">Funcionalidades</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
