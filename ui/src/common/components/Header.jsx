@@ -2,13 +2,14 @@ import React from 'react'
 import { VITE_APP_NAME } from '../../../constants'
 import AuthButtons from './AuthButtons'
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router';
 const Header = () => {
   const { isAuthenticated } = useAuth0();
   if(!isAuthenticated){return (<></>)}
   return (
     <header className="navbar bg-base-100 shadow-sm justify-between py-4 mt-4">
       <div className="flex max-w-2xs">
-        <a className="btn btn-ghost text-xl">{VITE_APP_NAME}</a>
+         <Link to={'/home'}><a className="btn btn-ghost text-xl" href='/home'>{VITE_APP_NAME}</a></Link>
       </div>
       
       <div className="flex gap-2 max-w-2xs">

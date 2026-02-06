@@ -24,7 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/help" element={<Help></Help>} />
         
         <Route element={<Layout />}>  
-          <Route path="/bruto-neto" element={<BrutoNeto></BrutoNeto>} />
+          <Route path="/bruto-neto" element={<ProtectedRoute><BrutoNeto></BrutoNeto></ProtectedRoute>} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
         </Route>
         <Route path="*" element={<NotFound />} />
